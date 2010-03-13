@@ -14,7 +14,7 @@ class Gem::Commands::LoveCommand < Gem::Command
     comment  = if args.size > 1
                  args.pop
                else
-                 "(No comment)"
+                 ask("Comment:")
                end
     gem_name = get_one_gem_name
     note     = GemLove::Note.new(gem_name, comment)

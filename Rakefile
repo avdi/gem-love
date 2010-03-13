@@ -13,6 +13,8 @@ begin
     gem.add_development_dependency "rspec", ">= 1.2.9"
     gem.add_development_dependency "yard", ">= 0"
     gem.add_development_dependency "test-construct", "~> 1.2"
+    gem.add_development_dependency "webmock", "~> 0.9.1"
+    gem.add_dependency "link_header", "~> 0.0.5"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new

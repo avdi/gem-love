@@ -52,6 +52,8 @@ module GemLove
     end
 
     context "for a saved user" do
+      subject { Fan.load_or_init(@ui, :home_dir => @construct) }
+
       before :each do
         @construct.file ".gem/love.yml" do |f|
           fan = Fan.new("Crow T Robot", "crow@sol.net")
@@ -62,6 +64,14 @@ module GemLove
       it "should not prompt the user on init" do
         @ui.should_not_receive(:ask)
         Fan.load_or_init(@ui, :home_dir => @construct)
+      end
+
+      it "should have the saved name" do
+        subject.name.should == "Crow T Robot"
+      end
+
+      it "should have the saved email address" do
+        subject.email_address.should == "crow@sol.net"
       end
     end
 

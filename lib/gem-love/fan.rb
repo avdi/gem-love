@@ -20,7 +20,7 @@ module GemLove
       config_file = home + '.gem' + 'love.yml'
 
       fan = if config_file.exist?
-              YAML.load(config_file.to_s)
+              YAML.load_file(config_file.to_s)
             else
               name  = ui.ask("What is your name?")
               email = ui.ask("What is your email address?")
