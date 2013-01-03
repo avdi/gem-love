@@ -40,6 +40,7 @@ describe 'gem love command' do
   end
 
   specify 'endorsing a gem' do
+    pending "completion of the server side"
     run 'gem love fattr'
     gem_named('fattr').should have(1).endorsements
   end
