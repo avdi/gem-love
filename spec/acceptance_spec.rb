@@ -1,4 +1,4 @@
-$LOAD_PATH.unshift(File.expand_path('../../lib', __FILE__))
+require 'spec_helper'
 require 'gem_love'
 require 'shellwords'
 require 'data_mapper'
@@ -23,12 +23,7 @@ module GemLove
   end
 end
 
-describe 'gem love command' do
-  before :all do
-    DataMapper.setup(:default, 'sqlite::memory:')
-    DataMapper.auto_migrate!
-  end
-
+describe 'gem love command', db: true do
   specify 'endorsing a gem' do
     pending "completion of the server side"
     run 'gem love fattr'

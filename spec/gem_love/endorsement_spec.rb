@@ -1,5 +1,5 @@
 require 'spec_helper'
-require_relative '../../lib/gem_love/endorsement'
+require 'gem_love/endorsement'
 
 module GemLove
   describe Endorsement do

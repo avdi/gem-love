@@ -1,4 +1,4 @@
-require_relative '../../lib/rubygems/commands/love_command.rb'
+require 'rubygems/commands/love_command.rb'
 require 'webmock/rspec'
 
 module GemLove

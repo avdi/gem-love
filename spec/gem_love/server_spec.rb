@@ -1,4 +1,5 @@
-require_relative '../../lib/gem_love/server'
+require 'spec_helper'
+require 'gem_love/server'
 require 'rack/test'
 
 module GemLove
