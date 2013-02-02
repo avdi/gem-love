@@ -6,7 +6,7 @@ group 'test' do
   gem 'rspec',                  '~> 2.12'
   gem 'webmock',                '~> 1.8'
   gem 'rack-test',              '~> 0.6.2'
-  gem 'dm-sqlite-adapteer',     '~> 1.2'
+  gem 'dm-sqlite-adapter',      '~> 1.2'
 end
 
 group 'server' do
