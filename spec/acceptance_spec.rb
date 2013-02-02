@@ -2,6 +2,7 @@ require 'spec_helper'
 require 'gem_love'
 require 'shellwords'
 require 'data_mapper'
+require 'webmock/rspec'
 
 module GemLove
   def self.gem_named(name)
@@ -25,7 +26,7 @@ end
 
 describe 'gem love command', db: true do
   specify 'endorsing a gem' do
-    pending "completion of the server side"
+    stub_request(:any, /^www\.gemlove\.org/).to_rack(GemLove::Server)
     run 'gem love fattr'
     gem_named('fattr').should have(1).endorsements
   end
