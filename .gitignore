@@ -1,3 +1,5 @@
 /bundle/bundler/setup.rb
 /.bundle
 /bundle
+/.idea
+\#*#
