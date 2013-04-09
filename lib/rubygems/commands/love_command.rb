@@ -20,31 +20,7 @@ END
 
   def execute
     gem_name = get_one_gem_name
-    gem_user = GemLove::GemUser.new
-    gem_user.endorse_gem(gem_name)
-  end
-end
-
-require 'net/http'
-module GemLove
-  class GemUser
-    attr_reader :client_key
-
-    def initialize(options={})
-      @client_key = options.fetch(:client_key) {
-        ENV.fetch('GEMLOVE_CLIENT_KEY') {
-          "NO_KEY_FOUND"
-        }
-      }
-    end
-
-    def endorse_gem(gem_name)
-      url = URI("http://www.gemlove.org/endorsements/#{gem_name}")
-      request = Net::HTTP::Post.new(url.path)
-      request['Authentication'] = "Bearer #{client_key}"
-      result = Net::HTTP.start(url.host, url.port) do |http|
-        http.request(request)
-      end
-    end
+    client = GemLove::Client.new
+    client.endorse_gem(gem_name)
   end
 end
