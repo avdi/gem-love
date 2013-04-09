@@ -10,8 +10,10 @@ module GemLove
         server  = GemLove::Server.new(endorsement_list: endorsement_list)
         browser = Rack::Test::Session.new(Rack::MockSession.new(server))
 
-        endorsement_list.should_receive(:add_endorsement_for_gem).with('fattr')
-        browser.post('/endorsements/fattr')
+        endorsement_list.should_receive(:add_endorsement_for_gem_by_client_key).
+          with('fattr', 'SOME_CLIENT_KEY')
+        browser.post('/endorsements/fattr', {},
+          {'HTTP_AUTHENTICATION' => 'Bearer SOME_CLIENT_KEY'})
       end
     end
   end

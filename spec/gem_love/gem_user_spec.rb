@@ -11,6 +11,15 @@ module GemLove
         a_request(:post, 'www.gemlove.org/endorsements/fattr').
           should have_been_made
       end
+
+      it 'includes the client key in requests' do
+        gem_user = GemUser.new(client_key: "THE_CLIENT_KEY")
+        stub_request(:any, 'www.gemlove.org/endorsements/nulldb')
+        gem_user.endorse_gem("nulldb")
+        a_request(:post, 'www.gemlove.org/endorsements/nulldb').
+          with(headers: {'Authentication' => 'Bearer THE_CLIENT_KEY' }).
+          should have_been_made
+      end
     end
   end
 end
