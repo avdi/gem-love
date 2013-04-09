@@ -12,11 +12,6 @@ module GemLove
       all(gem_name: name)
     end
 
-    def self.add_endorsement_for_gem_by_client_key(gem_name, client_key)
-      user = user_list.for_client_key(client_key)
-      create(gem_name: gem_name, user: user)
-    end
-
     def self.by_login(login)
       all(user: {login: login})
     end

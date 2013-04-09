@@ -4,38 +4,6 @@ require 'shellwords'
 require 'data_mapper'
 require 'webmock/rspec'
 
-module GemLove
-  def self.gem_named(name)
-    Rubygem.get(name)
-  end
-
-  def self.create_user(login)
-    User.create(login: login)
-  end
-
-  def self.user_for_login(login)
-    User.get(login)
-  end
-
-  Rubygem = Struct.new(:name) do
-    def self.get(name)
-      new(name)
-    end
-
-    def endorsements
-      endorsement_list.all_for_gem_named(name)
-    end
-
-    def endorsement_list
-      Endorsement
-    end
-
-    def endorsed_by?(login)
-      endorsements.by_login(login).any?
-    end
-  end
-end
-
 describe 'gem love command', db: true do
   before do
     ENV.delete('GEMLOVE_CLIENT_KEY')
